@@ -9,8 +9,6 @@
 // @grant        none
 // ==/UserScript==
 
-"use strict";
-
 const registerKeyDown = (keyboardEventOptions: KeyboardEventInit) => {
   const keyboardEvent = new KeyboardEvent("keydown", keyboardEventOptions);
   document.body.dispatchEvent(keyboardEvent);

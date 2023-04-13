@@ -1,0 +1,14 @@
+{
+  "name": "my-userscripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autoTranspose.js",
+  "scripts": {
+    "build": "npx tsc -p ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}

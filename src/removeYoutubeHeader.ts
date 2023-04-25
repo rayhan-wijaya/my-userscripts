@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Removes the youtube header in the front page
 // @author       You
-// @match        https://www.youtube.com/*
+// @match        https://www.youtube.com/
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
 // ==/UserScript==

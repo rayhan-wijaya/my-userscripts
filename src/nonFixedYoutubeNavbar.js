@@ -1,3 +1,4 @@
+"use strict";
 // ==UserScript==
 // @name         Non-Fixed Youtube Header
 // @namespace    http://tampermonkey.net/
@@ -9,15 +10,33 @@
 // @grant        none
 // ==/UserScript==
 
-let navbar = document.getElementById("masthead-container");
+const elementToSetPositionProperty = "#masthead-container"
 
-(async () => {
-  while (!navbar) {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    navbar = document.getElementById("masthead-container");
-  }
+const waitForElement = window.waitForElement || ((selector) => {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
 
-  if (navbar) {
-    navbar.style.position = "absolute";
-  }
-})()
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector));
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+})
+
+window.waitForElement = waitForElement
+
+const setNavbarPositionProperty = async (positionProperty) => {
+	const navbar = await waitForElement(elementToSetPositionProperty);
+	navbar.style.position = positionProperty;
+}
+
+setNavbarPositionProperty("absolute");
